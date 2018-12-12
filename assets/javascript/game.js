@@ -35,6 +35,21 @@ function game(){
     console.log(blanksAndCorrect)
 }
 
+function checkLetter(guessed_letter) {
+    var guess = true;
+    for(var i = 0; i < wrongGuess.length; i++){
+        if (guessed_letter == wrongGuess[i]) {
+            guess = false;
+        }
+  
+    }
+    if(guess){
+        checkGuess(guessed_letter);
+    }
+    else{
+        alert( guessed_letter+" already picked, pick a different letter!")
+    }
+}
 
 
 function checkGuess(guessed_letter) {
@@ -44,12 +59,11 @@ function checkGuess(guessed_letter) {
             blanksAndCorrect[i] = guessed_letter;
             guess = true;
         }
-        else{
-            wrongGuess.push(guessed_letter);        
-        }    
+  
     }
     if(guess != true){
         guesses--;
+        wrongGuess.push(guessed_letter);
     }
     console.log(blanksAndCorrect);
 }
@@ -64,13 +78,13 @@ function update_index() {
         aud()
         reset()
         //display wins on screen
-        document.getElementById("winstracker").innerHTML = " " + wins;
+        document.getElementById("winstracker").innerHTML = " " + win;
 
         //if LOST...then alert and reset new round
     } else if (guesses === 0) {
         loss++;
         reset()
-        document.getElementById("losstracker").innerHTML = " " + losses;
+        document.getElementById("losstracker").innerHTML = " " + loss;
     }
     //display losses on screen && guesses remaining countdown
     document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join(" ");
@@ -84,7 +98,8 @@ document.onkeyup = function(event) {
     // Captures guessed letter of key pressed
         var guessed_letter = event.key.toLowerCase();
         console.log(guessed_letter);
-        checkGuess(guessed_letter);
+        checkLetter(guessed_letter);
+        // checkGuess(guessed_letter);
         update_index()
         document.getElementById("playerguesses").innerHTML = "  " + wrongGuess.join(" ");
     }
