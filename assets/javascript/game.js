@@ -28,7 +28,7 @@ function game(){
         blanksAndCorrect.push("_");
         }
 
-    document.getElementById("currentword").html = "  " + blanksAndCorrect.join("  ");
+    document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join("  ");
     console.log(random_word);
     console.log(word_letters)
     console.log(letters)
@@ -45,12 +45,38 @@ function checkGuess(guessed_letter) {
             guess = true;
         }
         else{
-            wrongGuess.push(letter);
-            guesses--;        
+            wrongGuess.push(guessed_letter);        
         }    
+    }
+    if(guess != true){
+        guesses--;
     }
     console.log(blanksAndCorrect);
 }
+
+
+function update_index() {
+    console.log("wins:" + win + "| losses:" + loss + "| guesses left:" + guesses)
+
+    //if WON...then alert, play audio, display image and reset new round
+    if (word_letters.toString() == blanksAndCorrect.toString()) {
+        win++;
+        aud()
+        reset()
+        //display wins on screen
+        document.getElementById("winstracker").innerHTML = " " + wins;
+
+        //if LOST...then alert and reset new round
+    } else if (guesses === 0) {
+        loss++;
+        reset()
+        document.getElementById("losstracker").innerHTML = " " + losses;
+    }
+    //display losses on screen && guesses remaining countdown
+    document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join(" ");
+    document.getElementById("guessesremaining").innerHTML = " " + guesses;
+}
+
 
 game()
 
@@ -59,6 +85,7 @@ document.onkeyup = function(event) {
         var guessed_letter = event.key.toLowerCase();
         console.log(guessed_letter);
         checkGuess(guessed_letter);
-        document.getElementById("playerguesses").html = "  " + wrongGuess.join(" ");
+        update_index()
+        document.getElementById("playerguesses").innerHTML = "  " + wrongGuess.join(" ");
     }
     
