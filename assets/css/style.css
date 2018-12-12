@@ -1,0 +1,49 @@
+body {
+    background-image: url("https://img2.cgtrader.com/items/712263/4388668576/large/starship-enterprise-3d-model-low-poly-max-obj-3ds-fbx-mtl.png");
+    width: 100%
+}
+
+h1 {
+}
+
+h2 {
+
+}
+
+
+img {
+
+}
+
+
+.sidebar {
+}
+
+span {
+
+}
+
+.background {
+    background-image: url("../images/backsplash.jpg");
+}
+
+.container {
+    background-color: white;
+    margin-top: 5px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 5px;
+    text-align: center;
+
+}
+
+#currentword {
+    font-size: 30px;
+    font-family: 'Press Start 2P', cursive;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#scoreboard {
+    padding: 20px;
+}
