@@ -5,6 +5,7 @@ var word_letters= [];
 var letters = 0;
 var blanksAndCorrect = [];
 var wrongGuess = [];
+var correctGuess = [];
 
 
 var win= 0;
@@ -58,6 +59,7 @@ function checkGuess(guessed_letter) {
         if (guessed_letter == random_word[i]) {
             blanksAndCorrect[i] = guessed_letter;
             guess = true;
+            correctGuess.push(guessed_letter);
         }
   
     }
