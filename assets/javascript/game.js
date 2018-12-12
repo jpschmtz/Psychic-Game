@@ -28,17 +28,14 @@ function game(){
         blanksAndCorrect.push("_");
         }
 
-    document.getElementById("currentword").html = "  " + blanksAndCorrect.prepend("  ");
-    console.log(randomWord);
-    console.log(lettersOfWord)
-    console.log(blanks)
+    document.getElementById("currentword").html = "  " + blanksAndCorrect.join("  ");
+    console.log(random_word);
+    console.log(word_letters)
+    console.log(letters)
     console.log(blanksAndCorrect)
 }
 
 
-
-// GUESS PROCESS
-// Captures keyboard input. Depending on the letter pressed it will "call" (execute) different functions.
 
 function checkGuess(guessed_letter) {
     var guess = false
@@ -62,6 +59,6 @@ document.onkeyup = function(event) {
         var guessed_letter = event.key.toLowerCase();
         console.log(guessed_letter);
         checkGuess(guessed_letter);
-        document.getElementById("playerguesses").innerHTML = "  " + wrongGuess.prepend(" ");
+        document.getElementById("playerguesses").html = "  " + wrongGuess.join(" ");
     }
     
