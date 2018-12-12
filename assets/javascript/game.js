@@ -39,7 +39,7 @@ function game(){
 function checkLetter(guessed_letter) {
     var guess = true;
     for(var i = 0; i < wrongGuess.length; i++){
-        if (guessed_letter == wrongGuess[i]) {
+        if ((guessed_letter == wrongGuess[i]) || (guessed_letter == correctGuess[i])) {
             guess = false;
         }
   
@@ -74,19 +74,19 @@ function checkGuess(guessed_letter) {
 function update_index() {
     console.log("wins:" + win + "| losses:" + loss + "| guesses left:" + guesses)
 
-    //if WON...then alert, play audio, display image and reset new round
+
     if (word_letters.toString() == blanksAndCorrect.toString()) {
         win++;
-        aud()
+        alert(game_message[0])
         reset()
-        //display wins on screen
-        document.getElementById("winstracker").innerHTML = " " + win;
+        document.getElementById("winstracker").innerHTML= " " + win;
 
-        //if LOST...then alert and reset new round
+
     } else if (guesses === 0) {
         loss++;
+        alert(game_message[1])
         reset()
-        document.getElementById("losstracker").innerHTML = " " + loss;
+        document.getElementById("losstracker").innerHTML= " " + loss;
     }
     //display losses on screen && guesses remaining countdown
     document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join(" ");
